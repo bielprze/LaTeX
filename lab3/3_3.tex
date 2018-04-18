@@ -1,0 +1,76 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[polish]{babel}	%konieczny do polskich znaków
+\usepackage[latin2]{inputenc}   % lub utf8
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{enumerate}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstloadlanguages{C++}
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{2.5cm}{2.5cm}{2.5cm}{2.5cm}
+\sloppy
+
+\definecolor{darkred}{rgb}{0.9,0,0}
+\definecolor{grey}{rgb}{0.4,0.4,0.4}
+\definecolor{orange}{rgb}{1,0.6,0.05}
+\definecolor{darkgreen}{rgb}{0.2,0.5,0.05}
+
+ 
+\begin{document}
+Silnia \#1:
+
+\lstset{language=C++,
+basicstyle=\ttfamily\small,
+keywordstyle=\color{darkgreen}\ttfamily\bfseries\small,
+stringstyle=\color{red}\ttfamily\small,
+commentstyle=\color{grey}\ttfamily\small,
+numbers=left,
+numberstyle=\color{darkred}\ttfamily\scriptsize,
+identifierstyle=\color{blue}\ttfamily\small,
+showstringspaces=false,
+morekeywords={
+}}
+%float to wstawka
+\begin{lstlisting}[float=th, aboveskip=0pt, belowskip=2pt, extendedchars=true, frame=tRBl, frameround=ftff, backgroundcolor=\color{blue!10!white}]
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int s, n, i;
+  cout << "Proszê podaæ liczbê naturaln± n : ";
+  cin >> n;
+  i = 1;
+  s = 1;
+  
+  while (i < n)
+  {
+    i++;
+    s *= i;
+  }
+  cout << "Silnia: " << s << endl;
+}
+\end{lstlisting}
+Silnia \#1:
+\begin{lstlisting}[float=th, aboveskip=0pt, belowskip=2pt, extendedchars=true, frame=tRBl, frameround=ftff, backgroundcolor=\color{blue!5!white}]
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int s, n, i;  
+  cout << "Podaj liczbê naturaln±, n = ";
+  cin >> n;
+  s = 1;  
+  
+  for(i = 2; i <= n; i++) s *= i;  
+  
+  cout << "Silnia n: " << s << endl;
+}
+\end{lstlisting}
+\end{document}

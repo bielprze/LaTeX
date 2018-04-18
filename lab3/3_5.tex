@@ -1,0 +1,58 @@
+\documentclass[a4paper,12pt]{book}      
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[polish]{babel}
+\usepackage{listings}
+\usepackage{color,soul} %ul odpowiada za podkre¶lenia
+%\usepackage{tipa}
+ 
+\sloppy
+ 
+\lstloadlanguages{TeX}
+ 
+\lstset{
+	literate={±}{{\k{a}}}1
+           {æ}{{\'c}}1
+           {ê}{{\k{e}}}1
+           {ó}{{\'o}}1
+           {ñ}{{\'n}}1
+           {³}{{\l{}}}1
+           {¶}{{\'s}}1
+           {¼}{{\'z}}1
+           {¿}{{\.z}}1
+           {¡}{{\k{A}}}1
+           {Æ}{{\'C}}1
+           {Ê}{{\k{E}}}1
+           {Ó}{{\'O}}1
+           {Ñ}{{\'N}}1
+           {£}{{\L{}}}1
+           {¦}{{\'S}}1
+           {¬}{{\'Z}}1
+           {¯}{{\.Z}}1,
+	basicstyle=\small\ttfamily,
+	%extendedchars=true
+  keywordstyle=\color{red}\ttfamily\bfseries\small,
+  %keywordstyle=[2]\color{blue}\ttfamily\underline\small,
+  morekeywords={je¿eli, to, w, przeciwnym, razie, koniec, warunku},
+  %keywords=[2]{numer, karty, kredytowej}
+}
+\sloppy
+\begin{document}
+
+ \setul{0.5ex}{0.1ex}
+    \definecolor{Blue}{rgb}{0,0.0,1}
+    \setulcolor{Blue}
+
+\begin{lstlisting}[escapechar=\%]
+je¿eli %\color{blue} \ul{numer karty kredytowej}% jest wa¿ny to
+	wykonanie transakcji %w% oparciu o %numer karty% i zamówienie
+w przeciwnym razie
+    wy¶wietlenie wiadomo¶ci o niepowodzeniu
+koniec warunku
+\end{lstlisting}
+\end{document}
+%https://tex.stackexchange.com/questions/265793/how-can-i-avoid-the-use-of-default-styles-when-no-listings-language-is-set?rq=1
+
+emphstyle={[2]\underbar},
+ emph={[2]numer, karty, kredytowej},

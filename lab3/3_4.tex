@@ -1,0 +1,194 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[polish]{babel}	%konieczny do polskich znak√≥w
+\usepackage[latin2]{inputenc}   % lub utf8
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{enumerate}
+\usepackage{times}
+%\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\lstloadlanguages{C}
+\usepackage{titlesec}
+\usepackage{txfonts} 
+\usepackage{float}
+\usepackage{wrapfig} 
+ \usepackage{caption}
+%\usepackage[framemethod=tikz]{mdframed}
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{2.5cm}{2.5cm}{2.5cm}{2.5cm}
+\sloppy
+
+
+\definecolor{darkred}{rgb}{0.6,0,0} %rgb 0-1
+\definecolor{grey}{rgb}{0.4,0.4,0.4}
+\definecolor{orange}{rgb}{1,0.6,0.05}
+\definecolor{darkgreen}{rgb}{0.2,0.5,0.05}
+\definecolor{darkyellow}{RGB}{218,165,32}%RGB 0-255
+%\definecolor{lol){RGB}{0,206,209}
+
+
+
+\titleformat{\section}
+  {\normalfont\Large}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+ 
+ \titleformat{\subsection}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
+  
+  \newcommand\digitstyle{\color{grey}}
+\makeatletter
+\newcommand{\ProcessDigit}[1]
+{%
+  \ifnum\lst@mode=\lst@Pmode\relax%
+   {\digitstyle #1}%
+  \else
+    #1%
+  \fi
+}
+\lstset{literate=
+    {0}{{{\ProcessDigit{0}}}}1
+    {1}{{{\ProcessDigit{1}}}}1
+    {2}{{{\ProcessDigit{2}}}}1
+    {3}{{{\ProcessDigit{3}}}}1
+    {4}{{{\ProcessDigit{4}}}}1
+    {5}{{{\ProcessDigit{5}}}}1
+    {6}{{{\ProcessDigit{6}}}}1
+    {7}{{{\ProcessDigit{7}}}}1
+    {8}{{{\ProcessDigit{8}}}}1
+    {9}{{{\ProcessDigit{9}}}}1
+    {<=}{{\(\leq\)}}1,
+    morestring=[b]",
+    morestring=[b]',
+    morecomment=[l]//,
+}
+ 
+\lstset{language=C,
+basicstyle=\ttfamily,
+keywordstyle=\color{darkred}\ttfamily\bfseries\large,
+keywordstyle=[2]\color{blue}\ttfamily\bfseries\large,
+keywordstyle=[3]\color{darkyellow}\ttfamily\bfseries\large,
+keywordstyle=[4]\color{darkgreen}\ttfamily\bfseries\large,
+stringstyle=\color{darkred}\ttfamily\large,
+commentstyle=\color{blue!40!white}\ttfamily\small,
+%numberstyle=\tiny\color{grey},
+%numbers=left,                    
+%numbersep=5pt,
+keepspaces=true,
+identifierstyle=\color{black}\ttfamily\large,
+showstringspaces=false,
+aboveskip=0pt,
+belowskip=0pt,
+extendedchars=true,
+%columns=fullflexible,
+xleftmargin=0.4cm,frame=TlBr,framesep=5pt,
+backgroundcolor=\color{blue!3!white}, 
+rulecolor=\color{blue!70!white},
+tabsize=5,
+keywords=[2]{main},
+%keywords=[3]{include},
+keywords=[4]{for, return},
+%classoffset=1,
+%otherkeywords={>,<,include},
+ %morekeywords={>,<,include},
+ %keywordstyle=\color{darkyellow},
+  %classoffset=0,
+morekeywords={},
+%literate=
+ %           *{\{}{{\textcolor{black}{\{}}}{1}
+  %          {\}}{{\textcolor{black}{\}}}}{1}
+   %         {[}{{\textcolor{black}{[}}}{1}
+            % {$#$}{{\textcolor{yellow}{$#$}}}{1},
+escapechar=\@,
+float=th,
+captionpos=t,
+}
+ 
+\begin{document}
+\chapter*{C/Tablice}
+\section*{WstÍp}
+\subsection*{Sposoby deklaracji tablic}
+
+\begin{wrapfigure}[1]{o}{0.3\textwidth}
+\captionsetup{font=footnotesize,labelfont=footnotesize}
+  \centering
+
+ \includegraphics[width=0.3\textwidth]{arr.png}
+ \caption*{tablica 10-elementowa}
+\end{wrapfigure}
+
+TablicÍ deklaruje siÍ w nastÍpuj±cy sposÛb:
+\begin{lstlisting}[linewidth=10cm,float=!h,caption={Deklaracja tablicy},label=type]
+ typ nazwa_tablicy[rozmiar];
+\end{lstlisting}
+gdzie rozmiar oznacza ile zmiennych danego typu moøemy zmie∂ciÊ w tablicy. Zatem aby np. zadeklarowaÊ tablicÍ, mieszcz±c± 20 liczb ca≥kowitych moøemy napisaÊ tak:
+\begin{lstlisting}[float=!h,caption={Przyk≥ad deklaracji tablicy},label=exampleOfDeclaration]
+ int tablica[20];
+\end{lstlisting}
+Podobnie jak przy deklaracji zmiennych, takøe tablicy moøemy nadaÊ warto∂ci pocz±tkowe przy jej deklaracji. Odbywa siÍ to przez umieszczenie warto∂ci kolejnych elementÛw oddzielonych przecinkami wewn±trz nawiasÛw klamrowych:
+\begin{center}\vspace{-0.4cm}
+\begin{lstlisting}[float=!h,caption={Deklaracja z inicjalizacj±},label=declarationAndInicjalization]
+ int tablica[3] = {0,1,2};
+\end{lstlisting}
+\end{center}\vspace{-0.8cm}
+Niekoniecznie trzeba podawaÊ rozmiar tablicy, np.:
+\begin{center}\vspace{-0.5cm}
+\begin{lstlisting}[float=!h,caption={Deklaracja bez podania rozmiaru tablicy},label=declarationwithoutsize]
+ int tablica[] = {1, 2, 3, 4, 5};
+\end{lstlisting}
+\end{center}\vspace{-0.8cm}
+W takim przypadku kompilator sam ustali rozmiar tablicy (w tym przypadku - 5 elementÛw).
+\\[3mm]
+\noindent Rozpatrzmy nastÍpuj±cy kod:\vspace{4cm}%[float=th]
+\begin{center}
+\begin{lstlisting}[float=!ht,caption={Przyk≥ad},label=example]
+ @\color{darkyellow}\#include \color{BlueGreen}$<$stdio.h$>$@
+ @\color{darkyellow}\#define ROZMIAR 3@
+ int main()
+ {
+   int tab[ROZMIAR] = {3,6,8};
+   int i;
+   puts ("Druk tablicy tab:");
+ 
+   @\color{darkgreen}{for}@ (i=0; i<ROZMIAR; ++i) {
+     printf ("Element numer %d = %d\n", i, tab[i]);
+   }
+   @\color{darkgreen}{return} 0;
+ }
+\end{lstlisting}
+\end{center}\vspace{-0.8cm}
+Wynik:				%[float,floatplacement=H]
+\begin{center} \vspace{-0.4cm}
+\begin{lstlisting}[float=!ht,caption={Wynik uruchomienia programu},label=output]
+ Druk tablicy tab:
+ Element numer @0 = 3@
+ Element numer @1 = 6@
+ Element numer @2 = 8@
+\end{lstlisting}
+\end{center}
+\end{document}
+
+
+%https://www.sharelatex.com/learn/Code_listing#Using_listings_to_highlight_code
+%https://tex.stackexchange.com/questions/117533/is-it-possible-to-use-a-non-monospace-font-in-verbatim-environments
+%https://tex.stackexchange.com/questions/27663/using-bold-italic-text-inside-listings
+%https://tex.stackexchange.com/questions/119863/problems-with-the-lstlisting-environment-margin-and-white-line
+%https://latex.org/forum/viewtopic.php?t=7386
+
+ 
+ %\surroundwithmdframed[
+ % hidealllines=true,
+  %backgroundcolor=gray,
+  %innerleftmargin=15pt,
+  %innertopmargin=0pt,
+  %innerbottommargin=0pt]{lstlisting}
+  
+  %https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+  
+ % https://tex.stackexchange.com/questions/283170/using-different-colors-for-different-keywords-in-lstlisting
+%https://tex.stackexchange.com/questions/32174/listings-package-how-can-i-format-all-numbers
+%https://tex.stackexchange.com/questions/34896/coloring-digits-with-the-listings-package
+%https://tex.stackexchange.com/questions/23634/how-can-i-change-the-color-of-digits-when-using-the-listings-package
+%http://www.tex.ac.uk/FAQ-figurehere.html
+%https://tex.stackexchange.com/questions/283170/using-different-colors-for-different-keywords-in-lstlisting
